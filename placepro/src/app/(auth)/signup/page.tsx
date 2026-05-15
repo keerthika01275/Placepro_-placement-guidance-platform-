@@ -19,9 +19,7 @@ export default function SignupPage() {
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         }
       );
@@ -38,18 +36,17 @@ export default function SignupPage() {
 
       toast.success("Account created successfully");
       window.location.href = "/dashboard";
-    } catch (error) {
+    } catch {
       toast.error("Backend not connected");
     }
   }
 
   return (
-    <main className="grid min-h-screen place-items-center bg-[#050505] px-4 text-white">
+    <div className="w-full max-w-md">
       <form
         onSubmit={handleSignup}
-        className="w-full max-w-md rounded-[30px] border border-white/10 bg-white/5 p-8 shadow-[0_0_60px_rgba(229,9,20,0.25)] backdrop-blur-xl"
-      >
-        <h1 className="text-4xl font-black">Create Account</h1>
+className="rounded-[30px] border border-[var(--border)] bg-[var(--card)] p-8 shadow-xl backdrop-blur-xl"      >
+        <h1 className="text-4xl font-black text-white">Create Account</h1>
 
         <p className="mt-2 text-white/60">
           Start preparing with PlacePro.
@@ -92,6 +89,6 @@ export default function SignupPage() {
           </Link>
         </p>
       </form>
-    </main>
+    </div>
   );
 }
